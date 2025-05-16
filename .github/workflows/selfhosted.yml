@@ -6,6 +6,7 @@
 #
 
 name: Crave Builder(self-hosted)
+
 on:
   workflow_dispatch:
     # Various inputs to simplify usage of workflow.
@@ -13,7 +14,7 @@ on:
       BASE_PROJECT:
         description: 'Choose a base project:'
         required: true
-        default: 'LineageOS 21.0'
+        default: 'ArrowOS 13.1'
         type: choice
         options:
           - 'LineageOS 20.0'
@@ -32,46 +33,50 @@ on:
         description: "Command to initialize a different 'repo' project:"
         required: false
         default: "echo 'Build Starting!'"
+        type: choice
+        options:
+          - "echo 'Build Starting!'"
+          - "repo init --depth=1 -u https://github.com/ArrowOS-Ext/android_manifest.git -b arrow-13.1"
       REMOVALS:
         description: "Folders to be removed before syncing:"
         required: false
       LOCAL_MANIFEST:
         description: "Personal local manifest [repository or raw]:"
         required: true
-        default: 'https://github.com/sounddrill31/local_manifests_oxygen'
+        default: 'https://github.com/Envoy-Z-Build/local_manifests'
       LOCAL_MANIFEST_BRANCH:
         description: "Personal local manifest's branch:"
         required: false
-        default: 'lineage-21-qpr3'
+        default: 'arrow-lavender'
       DEVICE_NAME:
         description: "Device's codename:"
         required: true
-        default: "oxygen"
+        default: "lavender"
       PRODUCT_NAME:
         description: "Product to build:"
         required: true
-        default: "oxygen"
+        default: "arrow_lavender"
       BUILD_COMMAND:
         description: 'Command to be used for compiling:'
         required: true
-        default: 'mka bacon'
+        default: 'm bacon'
       BUILD_TYPE:
         description: 'Type of build:'
         required: true
         default: 'userdebug'
         type: choice
         options: 
-        - 'eng'
-        - 'userdebug'
-        - 'user' 
+          - 'eng'
+          - 'userdebug'
+          - 'user'
       CLEAN_BUILD:
         description: 'Build with a clean workspace?'
         required: true
         default: 'no'
         type: choice
         options: 
-        - 'yes'
-        - 'no'
+          - 'yes'
+          - 'no'
 
 jobs:
   Start-Runner:
