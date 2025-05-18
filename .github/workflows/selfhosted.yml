@@ -36,7 +36,7 @@ on:
         type: choice
         options:
           - "echo 'Build Starting!'"
-          - "repo init --depth=1 -u https://github.com/ArrowOS-Ext/android_manifest.git -b arrow-13.1"
+          - "repo init --depth=1 -u https://github.com/ArrowOS-Ext/android_manifest.git -b arrow-13.2"
       REMOVALS:
         description: "Folders to be removed before syncing:"
         required: false
